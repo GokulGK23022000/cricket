@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cricket</title>
+		
+	</head>
+	
+	<body>
+			<button id="play-btn">Play</button>
+			<button id="reset-btn">Reset</button>
+			<h2><span>Player1</span>;<span id="player1-score">0</span></h2>
+			<h2><span>Player2</span>;<span id="player2-score">0</span></h2>
+			<h3 id="result"><h3>
+		<script>
+		
+			var playBtn = document.getElementById("play-btn"),
+				resetBtn = document.getElementById("reset-btn"),
+				player1Element = document.getElementById("player1-score"),
+				player2Element = document.getElementById("player2-score"),
+				playerRes = document.getElementById("result");
+			   
+				var player1Score=0;
+				var player2Score = 0;
+				console.log(player1Score)
+				var batting = "player1";
+				console.log(player1Element);
+				
+				<!-- create a random number by using math method -->
+				function randomNum(){
+				
+			
+					let randomNumber = Math.random();
+					randomNumber *= 10;
+					randomNumber = Math.floor(randomNumber);
+					player1Score=randomNumber;
+					return randomNumber;
+				
+				}
+				function playFun(){
+					let run = randomNum();
+					console.log(run)
+					console.log(player1Score)
+					player1Element.innerHTML=player1Score;
+					console.log(run)
+					if (run>=7){
+						if (batting=="player1"){
+							batting ="player2";
+							updatefun();
+						}else{
+						  gameOver();
+						}
+					}else{
+						if (run==5){
+							run=1;
+						}
+						else if (batting== "player1"){
+							player1Score += run;
+						}
+						else if(batting== "player2"){
+						player2Score += run;
+						}
+						
+					}
+					
+				}
+				
+				function updatefun(){
+				
+					<!-- player1Element.innerHTML= player1Score; -->
+					player2Element.innerHTML= player2Score;
+					
+					if (batting=="player2"){
+					console.log("dfha")
+						if(player2Score > player1Score){
+						gameOver();
+						}	
+					}
+				}
+				
+				function gameOver(){
+					if(player1Score > player2Score){
+						playerRes.innerHTML= "player 1 won";
+						}
+						else if(player1Score < player2Score){
+							playerRes.innerHTML= "player 2 won";
+						}
+						else{
+							playerRes.innerHTML = "Match Tie";
+						}
+					}
+					
+					function resetFun(){
+						player1Score= 0;
+						player2Score= 0;
+						playerRes.innerHTML= "sfdgh";
+						batting=="Player1";
+						updatefun()
+						
+					}
+					
+					playBtn.addEventListener("click",playFun);
+					playBtn.addEventListener("click",resetFun);
+		
+		
+		
+		
+		
+		</script>
+	
+	</body>
+</html>
